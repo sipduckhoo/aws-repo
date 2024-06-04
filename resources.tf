@@ -28,12 +28,12 @@ resource "aws_iam_user" "eve" {
 }
 
 resource "aws_iam_group_membership" "devops" {
-    name = aws_iam_group.devops.name
+    name = aws_iam_group.devops.name 
 
     users = [
         aws_iam_user.eve.name
     ]
-    group = aws_iam_group.devops.name
+    group = aws_iam_group.devops.name #타겟 그룹
 }
 
 resource "aws_s3_bucket" "bucket2"{
@@ -50,6 +50,7 @@ resource "aws_instance" "web-2"{
     instance_type = var.inst-type
     key_name = aws_key_pair.mykey.key_name
 }
+#이때 이 인스턴스는 default VPC에 생성된다.
 
 resource "aws_key_pair" "mykey" {
     key_name = "mykey"
