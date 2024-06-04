@@ -37,10 +37,10 @@ resource "aws_iam_group_membership" "devops" {
 }
 
 resource "aws_s3_bucket" "bucket2"{
-    bucket = "terraform-kdigital-shop-20240604-1ljhun"
+    bucket = var.inst-type
 }
 
 resource "aws_instance" "web-1"{
-    ami = "ami-06068bc7800ac1a83"
+    ami = var.ami
     instance_type = "t2.micro"
 }
