@@ -35,3 +35,12 @@ resource "aws_iam_group_membership" "devops" {
     ]
     group = aws_iam_group.devops.name
 }
+
+resource "aws_s3_bucket" "bucket2"{
+    bucket = "terraform-kdigital-shop-20240604-1ljhun"
+}
+
+resource "aws_instance" "web-1"{
+    ami = "ami-06068bc7800ac1a83"
+    instance_type = "t2.micro"
+}
