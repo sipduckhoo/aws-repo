@@ -42,5 +42,16 @@ resource "aws_s3_bucket" "bucket2"{
 
 resource "aws_instance" "web-1"{
     ami = var.ami
-    instance_type = "t2.micro"
+    instance_type = var.inst-type
+}
+
+resource "aws_instance" "web-2"{
+    ami = var.ami
+    instance_type = var.inst-type
+    key_name = aws_key_pair.mykey.key_name
+}
+
+resource "aws_key_pair" "mykey" {
+    key_name = "mykey"
+    public_key = file(var.PATH_TO_PUBLIC_KEY)
 }
